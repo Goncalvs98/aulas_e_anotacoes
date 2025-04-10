@@ -43,7 +43,7 @@ Na prática, utilizamos métodos como **decomposição em frações parciais** e
 | **Linearidade**                    | $$\mathcal{L} \{ a f(t) + b g(t) \} = aF(s) + bG(s)$$                    |
 | **Derivação no Tempo**             | $$\mathcal{L} \{ f'(t) \} = sF(s) - f(0)$$                               |
 | **Derivada Segunda**               | $$\mathcal{L} \{ f''(t) \} = s^2 F(s) - s f(0) - f'(0)$$                 |
-| **Integração**                     | $$\mathcal{L} \left\{ \int_0^t f(\tau) d\tau \right\} = \frac{F(s)}{s}$$ |
+| **Integração**                     | $$\mathcal{L} \{ \int_0^t f(\tau) d\tau \} = \frac{F(s)}{s}$$ |
 | **Multiplicação por \( e^{at} \)** | $$\mathcal{L} \{ e^{at} f(t) \} = F(s - a)$$                             |
 | **Deslocamento no Tempo**          | $$\mathcal{L} \{ u(t - a) f(t - a) \} = e^{-as} F(s)$$                   |
 | **Convolução**                     | $$\mathcal{L} \{ f * g \} = F(s) G(s)$$                                  |
@@ -57,6 +57,7 @@ Para analisar a resposta de um sistema em regime estacionário aplica-se o teore
 $$
 \lim_{ t \to \infty } f(t)=\lim_{ s \to 0 } F(S) 
 $$
+
 Se uma transformada de Laplace é multiplicada por "s", o valor do produto fazendo "s" tender a zero é o valor da transformada inversa com "t" tendendo a infinito.
 
 Onde f(t) é uma função qualquer no domínio do tempo.
@@ -64,6 +65,7 @@ Onde f(t) é uma função qualquer no domínio do tempo.
 $$
 f(0^+)=\lim_{ t \to 0 } f(t)=\lim_{ S \to \infty } S F(S)  
 $$
+
 Se uma transformada de Laplace é multiplicada por “s”, o valor do produto fazendo “s” tender a infinito é o valor da transformada inversa com “t” tendendo a zero.
 
 ---
@@ -120,22 +122,27 @@ $$
 ### **Solução de Equações Diferenciais**
 
 Exemplo 1:
+
 $$
 \begin{equation}
     \frac{d^2 y(t)}{dt^2} + 1.7 \frac{d y(t)}{dt} + 0.5 y(t) = 0.1
 \end{equation}
 $$
+
 Tomando a transformada de Laplace:
+
 $$
 \begin{equation}
     s^2 Y(s) + 1.7s Y(s) + 0.5 Y(s) = \frac{0.1}{s}
 \end{equation}
 $$
+
 $$
 \begin{equation}
     Y(s) (s^2 + 1.7s + 0.5) = \frac{0.1}{s}
 \end{equation}
 $$
+
 $$
 \begin{equation}
     Y(s) = \frac{0.1}{s (s^2 + 1.7s + 0.5)}
@@ -143,16 +150,19 @@ $$
 $$
 
 Resolvendo as raízes da equação característica:
+
 $$
 \begin{equation}
     \lambda = \frac{-1.7 \pm \sqrt{(1.7)^2 - 4(0.5)}}{2}
 \end{equation}
 $$
+
 $$
 \begin{equation}
     \lambda = \frac{-1.7 \pm 0.94}{2} = -1.32, -0.38
 \end{equation}
 $$
+
 $$
 \begin{equation}
     Y(s) = \frac{0.1}{s(s+1.32)(s+0.38)}
@@ -160,6 +170,7 @@ $$
 $$
 
 Expandindo em frações parciais:
+
 $$
 \begin{equation}
     \frac{0.1}{s(s+1.32)(s+0.38)} = \frac{A_1}{s} + \frac{A_2}{s+1.32} + \frac{A_3}{s+0.38}
@@ -179,6 +190,7 @@ A_{3}=\frac{0.1}{s(s+1.32)(s+0.38)} \times (s+0.38); s=-0.38 → A_{3}=\frac{0.1
 $$
 
 Após a resolução dos coeficientes:
+
 $$
 \begin{equation}
     Y(s) = \frac{0.2}{s} + \frac{0.08}{s+1.32} - \frac{0.28}{s+0.38}
@@ -193,6 +205,7 @@ $$
 $$
 
 Verificação para \( t = 0 \):
+
 $$
 \begin{equation}
     y(0) = 0.2 + 0.08 - 0.28 = 0
@@ -207,6 +220,7 @@ $$
 
 Ex2:
 Função de transferência:
+
 $$
 \begin{equation}
     F(s) = \frac{2s^2}{2s^2 + 4s + 1}
@@ -214,6 +228,7 @@ $$
 $$
 
 Analisando o valor inicial:
+
 $$
 \begin{equation}
     VI = \lim_{s \to \infty} s F(s) = \lim_{s \to \infty} s\frac{2s^2}{2s^2 + 4s + 1}
@@ -225,9 +240,11 @@ $$
     VI = \frac{2s}{2 + \frac4s + \frac{1}{s^2}} = \frac{\infty}{2}= +\infty
 \end{equation}
 $$
+
 $$
 VF = \lim_{s \to 0} s F(s) = \lim_{s \to 0} s\frac{2s^2}{2s^2 + 4s + 1}
 $$
+
 $$
 VF=\frac{2(0)^3}{2(0)^2 + 4(0) + 1} = \frac{0}{1}=0
 $$
@@ -258,6 +275,7 @@ $$
 
 ## 📌 **8. Diagrama de Blocos**
 ![[Pasted image 20250407173358.png]]
+
 $$
 G(S)=\frac{Y(S)→S. Saída}{U(S)→S. Entrada}=\frac{\delta Saída}{\delta Entrada}
 $$
@@ -269,15 +287,21 @@ $$
 $$
 G(S)=\frac{a_{0}S+a_{1}S²+a_{2}S^3+\dots+a_{m-1}S^m}{b_{0}S+b_{1}S²+b_{2}S^3+\dots+b_{n-1}S^n}
 $$
+
 Exemplo: A seguinte função 
+
 $$
 F(S)=\frac{S+0.1}{(S+1)(S+2)(S+3)}
 $$
+
 Tem os seguintes zeros:
+
 $$
 S+0.1=0→S=-0.1
 $$
+
 E os seguinte polos:
+
 $$
 S+1=0→S=-1
 $$
@@ -289,6 +313,7 @@ $$
 $$
 S+3=0→S=-3
 $$
+
 ![[Pasted image 20250407175044.png]]
 - Se todos os polos estão no semi-plano real-negativo, o sistema é estável
 - Se pelo menos um polo estiver no semi-plano real-posistovo, o sistema é instável
@@ -297,6 +322,7 @@ $$
 ## Série
 
 ![[Pasted image 20250407175551.png]]
+
 $$
 U(S)G_{1}(S)G_{2}(S)=Y(S)
 $$
@@ -305,6 +331,7 @@ $$
 
 ## Paralelo
 ![[Pasted image 20250407180336.png]]
+
 $$
 U(S)[G_{1}(S)±G_{2}(S)±G_{3}(S)]=Y(S)
 $$
@@ -318,15 +345,19 @@ $$
 $$
 C=(R±CH)G
 $$
+
 $$
 C=RG±CHG
 $$
+
 $$
 C±CHG=RG
 $$
+
 $$
 C(1±HG)=RG
 $$
+
 $$
 \frac{C}{R}=\frac{G}{1±GH}
 $$
